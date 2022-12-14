@@ -1,0 +1,47 @@
+<html lang="en">
+    <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+    crossorigin="anonymous"
+  />
+    <body>
+        <%- include('./partials/nav.ejs') %>
+        <b><h1 style="text-align: center;padding-top: 1rem;">Set of Numbers to Run Through a BST / AVL Tree</h1><b><br> 
+        <div style="text-align: center;" class="form-group"> 
+            <form action="/treeify/input/newInput" method="POST">              
+                <label class="form-group" style="text-align: center;padding-left: 2.6rem;"><u>Post Number Set, Comma Seperated</u></label><br>
+                <ul style="list-style: none;" >
+                    <li>
+                        <label>Numerical Input
+                            <input class="form-control" placeholder="Numerical Input" type="text" id="numbers" name="numbers" value="<%= locals.numbers %>" required>
+                        </label>
+                    </li>
+                <br>
+                <button>POST</button>
+                </ul>
+            </form>
+         </div>
+        <h3 style="margin-left: 2rem;">List of Inputs: </h3>
+                        <table style="text-align: center;" class="table table-striped">
+                            <thead style="text-align: center;">
+                              <tr style="text-align: center;">
+                                <th scope="col">Input Parsed</th>
+                                <th scope="col">Input stringify</th>
+                              </tr>
+                            </thead>
+                            <tbody >
+                                <% if (theNumbers.length > 0) { %>
+                                    <% theNumbers.reverse().forEach(numbersList => { %>
+                              <tr >
+                                <td><%= `${numbersList.numbers}` %></td>
+                                <td><%= JSON.stringify(numbersList.numbers) %></td>
+                                <% }) %>
+                                <% } %>
+                              </tr>
+                            </tbody>
+                          </table>
+        </div>
+    </body>
+    <%- include('./partials/footer.ejs') %>
+</html>
