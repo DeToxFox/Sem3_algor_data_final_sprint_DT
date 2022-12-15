@@ -5,16 +5,12 @@
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
     crossorigin="anonymous"
   />
-  <%- include('./partials/head.ejs') %>
+  <%- include('./partials/head.ejs') %> <%- include('./partials/nav.ejs') %>
   <!-- Cuurent display of numbers in a Binary Search Tree -->
   <body>
-    <%- include('./partials/nav.ejs') %>
-    <div class="form-group">
-      <% PurpleMonkey.forEach(data => { %>
-      <p>Input: <%= data.input %></p>
-      <pre><%- JSON.stringify(data.tree, null, 3) %></pre>
-      <hr />
-      <% }) %>
+    <div>
+      <!-- https://stackoverflow.com/questions/5670752/how-can-i-pretty-print-json-using-node-js#:~:text=234-,I,-think%20this%20might -->
+      <pre class="form-group"><%= JSON.stringify(createdTree, null, 4) %></pre>
     </div>
   </body>
 </html>

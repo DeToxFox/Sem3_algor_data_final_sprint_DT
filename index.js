@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
 
 // Routes to the input page
 const treeifyRouter = require("./routes/treeify");
-app.use("/input", treeifyRouter);
+app.use("/treeify", treeifyRouter);
 
 app.use((req, res) => {
   res.status(404).render("404");

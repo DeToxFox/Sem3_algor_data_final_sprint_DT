@@ -29,7 +29,7 @@ router.get("/", async (req, res) => {
   //     {numbers: 8,12,16,18,19,25,29,36,32,45,48,50,52,55,60},
   // ];
   try {
-    let theNumbers = await numbersDal.getNumbers();
+    let theNumbers = await numbersDal.getAllObjects();
     if (DEBUG) console.table(theNumbers);
     res.render("input", { theNumbers });
   } catch {
@@ -62,7 +62,7 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   if (DEBUG) console.log("numbers.POST");
   try {
-    await numbersDal.addNumbers(req.body.numbers);
+    await numbersDal.addObjects(req.body.numbers);
     res.redirect("/input/");
     console.log("INPUT POST WORKED");
     await treeDal.avlTree(req.body.numbers);
@@ -92,7 +92,7 @@ router.post("/", async (req, res) => {
 //     console.log(`the input in input.js routes:`, input);
 //     // input.map((num) => parseInt(num));
 
-//     await numbersDal.addNumbers(input);
+//     await numbersDal.addObjects(input);
 //     res.redirect("/input/");
 //     console.log("INPUT POST WORKED");
 //   } catch {

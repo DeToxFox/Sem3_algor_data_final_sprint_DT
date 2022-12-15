@@ -1,8 +1,8 @@
 const { ObjectId } = require("mongodb");
 const dal = require("./mdb");
 
-async function getNumbers() {
-  if (DEBUG) console.log("input.mongo.dal.getNumbers()");
+async function getAllObjects() {
+  if (DEBUG) console.log("input.mongo.dal.getAllObjects()");
   try {
     await dal.connect();
     const cursor = dal.db("algor_sprint2").collection("input").find();
@@ -28,10 +28,10 @@ async function getNumberByNumberId(id) {
   }
 }
 // // original code
-// async function addNumbers(numbers) {
+// async function addObjects(numbers) {
 //   console.log(`The numbers inputed: `, numbers);
 //   if (DEBUG)
-//     console.log("Dec 13, Algroithm Sprint, input.mongo.dal.addNumbers()");
+//     console.log("Dec 13, Algroithm Sprint, input.mongo.dal.addObjects()");
 //   let newLogin = JSON.parse(`{  "numbers": "` + numbers + `"}`);
 //   console.log(`newLogin Value: `, newLogin);
 //   try {
@@ -47,7 +47,7 @@ async function getNumberByNumberId(id) {
 // }
 
 // original code, sorta
-async function addNumbers(numbers) {
+async function addObjects(numbers) {
   console.log(`The numbers inputed: `, numbers);
   const theNumbers = JSON.parse(`{"numbers": "` + Array.from(numbers) + `"}`);
   console.log(`theNumbers: `, theNumbers);
@@ -58,7 +58,7 @@ async function addNumbers(numbers) {
     theArray.push(myArray[i]);
   }
   if (DEBUG)
-    console.log("Dec 13, Algroithm Sprint, input.mongo.dal.addNumbers()");
+    console.log("Dec 13, Algroithm Sprint, input.mongo.dal.addObjects()");
   let newLogin = JSON.parse(`{  "numbers": "` + theArray + `"}`);
   console.log(`newLogin Value: `, newLogin);
   try {
@@ -74,7 +74,7 @@ async function addNumbers(numbers) {
 }
 
 // Possible solution based on original code
-// async function addNumbers(numbers) {
+// async function addObjects(numbers) {
 //   const myArray = numbers.split(",");
 //   const theArray = [];
 //   for (let i = 0; i < myArray.length; i++) {
@@ -103,10 +103,10 @@ async function addNumbers(numbers) {
 // }
 
 // instert many
-// async function addNumbers(numbers) {
+// async function addObjects(numbers) {
 //   console.log(`The numbers inputed: `, numbers);
 //   if (DEBUG)
-//     console.log("Dec 13, Algroithm Sprint, input.mongo.dal.addNumbers()");
+//     console.log("Dec 13, Algroithm Sprint, input.mongo.dal.addObjects()");
 //   let newLogin = JSON.parse(`{  "numbers": "` + numbers + `"}`);
 //   console.log(`newLogin Value: `, newLogin);
 //   try {
@@ -122,10 +122,10 @@ async function addNumbers(numbers) {
 // }
 
 // More Testing
-// async function addNumbers(numbers) {
+// async function addObjects(numbers) {
 //   console.log(`The numbers inputed: `, numbers);
 //   if (DEBUG)
-//     console.log("Dec 13, Algroithm Sprint, input.mongo.dal.addNumbers()");
+//     console.log("Dec 13, Algroithm Sprint, input.mongo.dal.addObjects()");
 //   let newLogin = JSON.parse(`{  "numbers": "` + numbers + `"}`);
 //   // let addedNumbers = await newLogin.toArray();
 //   try {
@@ -142,10 +142,10 @@ async function addNumbers(numbers) {
 // }
 
 // Testing to see if I can create an array from the input
-// async function addNumbers(input) {
+// async function addObjects(input) {
 //   console.log(`The numbers inputed: `, input);
 //   if (DEBUG)
-//     console.log("Dec 13, Algroithm Sprint, input.mongo.dal.addNumbers()");
+//     console.log("Dec 13, Algroithm Sprint, input.mongo.dal.addObjects()");
 //   let newLogin = JSON.parse(`{  "numbers": "` + input + `"}`);
 //   console.log(`newLogin Value: `, newLogin);
 //   try {
@@ -161,7 +161,7 @@ async function addNumbers(numbers) {
 // }
 
 module.exports = {
-  getNumbers,
+  getAllObjects,
   getNumberByNumberId,
-  addNumbers,
+  addObjects,
 };
