@@ -1,8 +1,8 @@
 const { ObjectId } = require("mongodb");
 const dal = require("./mdb");
 
-async function getNumbers() {
-  if (DEBUG) console.log("input.mongo.dal.getNumbers()");
+async function getAllObjects() {
+  if (DEBUG) console.log("input.mongo.dal.getAllObjects()");
   try {
     await dal.connect();
     const cursor = dal.db("algor_sprint2").collection("input").find();
@@ -13,12 +13,12 @@ async function getNumbers() {
   }
 }
 
-// original code
-async function addNumbers(numbers, newTree) {
+async function addObjects(userInput, pushToMongo) {
   if (DEBUG)
-    console.log("Dec 13, Algroithm Sprint, input.mongo.dal.addNumbers()");
+    console.log("Dec 13, Algroithm Sprint, input.mongo.dal.addObjects()");
+  // const toMongoDB = JSON.stringify(createdTree);
   let newLogin = JSON.parse(
-    `{  "numbers": "` + numbers + `", "tree": "` + newTree + `"}`
+    `{  "numbers": "` + userInput + `", "tree": ` + pushToMongo + `}`
   );
   // console.log(`newLogin Value: `, newLogin);
   try {
@@ -34,6 +34,6 @@ async function addNumbers(numbers, newTree) {
 }
 
 module.exports = {
-  getNumbers,
-  addNumbers,
+  getAllObjects,
+  addObjects,
 };

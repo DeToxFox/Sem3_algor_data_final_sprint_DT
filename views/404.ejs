@@ -1,9 +1,20 @@
 <html lang="en">
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+    crossorigin="anonymous"
+  />
   <%- include('./partials/head.ejs') %>
   <body>
     <%- include('./partials/nav.ejs') %>
-    <div class="lost content">
-      <h2>Oops! Missing content 404</h2>
+    <div class="text-center" style="text-align: center">
+      <h2 class="mt-4">Oops! Missing content 404</h2>
+      <img
+        src="public/404"
+        style="height: 60%; width: 40%"
+        alt="404 Dead Link"
+      />
     </div>
   </body>
   <%- include('./partials/footer.ejs') %>

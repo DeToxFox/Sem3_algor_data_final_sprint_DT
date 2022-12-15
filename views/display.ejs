@@ -5,16 +5,26 @@
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
     crossorigin="anonymous"
   />
-  <%- include('./partials/head.ejs') %>
+  <%- include('./partials/head.ejs') %> <%- include('./partials/nav.ejs') %>
   <!-- Display of all previously displayed trees -->
   <body>
-    <%- include('./partials/nav.ejs') %>
-    <div class="form-group">
-      <% PurpleMonkey.forEach(data => { %>
-      <p>Input: <%= data.input %></p>
-      <pre><%- JSON.stringify(data.tree, null, 3) %></pre>
-      <hr />
-      <% }) %>
-    </div>
+    <h3 style="margin-left: 2rem">List of Inputs:</h3>
+    <table style="text-align: center" class="table table-striped">
+      <thead style="text-align: center">
+        <tr style="text-align: center">
+          <th scope="col">Input</th>
+          <th scope="col">Output</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (theNumbers.length > 0) { %> <% theNumbers.forEach(numbersList =>
+        { %>
+        <tr>
+          <td><%= `${numbersList.numbers}` %></td>
+          <td><%= JSON.stringify(numbersList.tree, null, 4) %></td>
+          <% }) %> <% } %>
+        </tr>
+      </tbody>
+    </table>
   </body>
 </html>
