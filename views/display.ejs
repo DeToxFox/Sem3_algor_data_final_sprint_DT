@@ -8,20 +8,29 @@
   <%- include('./partials/head.ejs') %> <%- include('./partials/nav.ejs') %>
   <!-- Display of all previously displayed trees -->
   <body>
-    <h3 style="margin-left: 2rem">List of Inputs:</h3>
+    <h3 style="text-align: center; padding-bottom: 1rem; padding-top: 1rem">
+      <u>All Trees Displayed</u>
+    </h3>
     <table style="text-align: center" class="table table-striped">
       <thead style="text-align: center">
-        <tr style="text-align: center">
-          <th scope="col">Input</th>
-          <th scope="col">Output</th>
-        </tr>
+        <tr style="text-align: center"></tr>
       </thead>
       <tbody>
         <% if (theNumbers.length > 0) { %> <% theNumbers.forEach(numbersList =>
         { %>
         <tr>
-          <td><%= `${numbersList.numbers}` %></td>
-          <td><%= JSON.stringify(numbersList.tree, null, 4) %></td>
+          <td>
+            <div>
+              <p style="font-weight: bold">
+                Input: <%= ` ${ numbersList.numbers}` %>
+              </p>
+            </div>
+            <div>
+              <p style="font-weight: bold">Output:</p>
+              <%= JSON.stringify(numbersList.tree, null, 4) %>
+            </div>
+          </td>
+
           <% }) %> <% } %>
         </tr>
       </tbody>
