@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const numbersDal = require("../services/m.input.dal");
-// AVLTree is exported from avlTree.js, it must be imported here to use in posting a balanced tree to MongoDB
-const { AVLTree } = require("../services/avlTree");
+// AVLTree is exported from bst_avl_trees.js, it must be imported here to use in posting a balanced tree to MongoDB
+const { AVLTree } = require("../dataStructures/bst_avl_trees");
 
 // View all Binary Search Trees, display.ejs is the final display of all objects in MongoDB
 router.get("/", async (req, res) => {
@@ -29,7 +29,7 @@ router.get("/input", async (req, res) => {
 router.post("/input/newInput", async (req, res) => {
   if (DEBUG) console.log(req.body);
   try {
-    // new AVLTree() is a constructor function from avlTree.js and appends to the const createdTree
+    // new AVLTree() is a constructor function from bst_avl_trees.js and appends to the const createdTree
     const createdTree = new AVLTree();
     // input array is created to hold the user input after it is split
     // let userInput = [];
@@ -40,8 +40,7 @@ router.post("/input/newInput", async (req, res) => {
     userInput.map((number) => {
       createdTree.insert(Number(number));
     });
-    // if (DEBUG) console.log("createdTree:");
-    // if (DEBUG) console.log(createdTree);
+    if (DEBUG) console.log(`Created Tree: `, createdTree);
     console.log("userInput: ", userInput);
     const pushToMongo = JSON.stringify(createdTree);
     // Inserts the new tree into the database and the input from the user.
@@ -63,7 +62,7 @@ router.post("/input/newInput", async (req, res) => {
 //     await numbersDal.addObjects(req.body.numbers);
 //     res.redirect("/input/");
 //     console.log("INPUT POST WORKED");
-//     await numbersDal.avlTree(req.body.numbers);
+//     await numbersDal.bst_avl_trees(req.body.numbers);
 //     res.redirect("/input/");
 //     console.log("AVL Tree WORKED");
 //   } catch {
@@ -75,12 +74,12 @@ router.post("/input/newInput", async (req, res) => {
 // router.post("/", async (req, res) => {
 //   if (DEBUG) console.log("numbers.POST");
 //   try {
-//     const newTree = await numbersDal.avlTree(req.body.numbers);
+//     const newTree = await numbersDal.bst_avl_trees(req.body.numbers);
 //     let input = [];
 //     await numbersDal.addObjects(req.body.numbers);
 //     res.redirect("/input/");
 //     console.log("INPUT POST WORKED");
-//     await numbersDal.avlTree(req.body.numbers);
+//     await numbersDal.bst_avl_trees(req.body.numbers);
 //     res.redirect("/input/");
 //     console.log("AVL Tree WORKED");
 //   } catch {

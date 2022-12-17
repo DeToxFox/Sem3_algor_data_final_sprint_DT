@@ -65,7 +65,7 @@ router.post("/", async (req, res) => {
     await numbersDal.addObjects(req.body.numbers);
     res.redirect("/input/");
     console.log("INPUT POST WORKED");
-    await treeDal.avlTree(req.body.numbers);
+    await treeDal.bst_avl_trees(req.body.numbers);
     res.redirect("/input/");
     console.log("INPUT POST WORKED");
   } catch {
