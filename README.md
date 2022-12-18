@@ -44,3 +44,5 @@ if scripts already exists do the following, NOTE a comma has to seperate the 2
 7. Install npm i date-fns
 
 8. Install npm install bootstrap, for css
+
+9. Install npm install --save-dev jest
