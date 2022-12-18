@@ -6,7 +6,7 @@
 const express = require("express");
 const methodOverride = require("method-override");
 const app = express();
-const PORT = 3000;
+const PORT = 4500;
 
 global.DEBUG = true;
 app.set("view engine", "ejs");

@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const numbersDal = require("../services/m.input.dal");
-// AVLTree is exported from bst_avl_trees.js, it must be imported here to use in posting a balanced tree to MongoDB
+// AVLTree is exported from avlTree.js, it must be imported here to use in posting a balanced tree to MongoDB
 const { AVLTree } = require("../dataStructures/bst_avl_trees");
 
 // View all Binary Search Trees, display.ejs is the final display of all objects in MongoDB
@@ -26,10 +26,10 @@ router.get("/input", async (req, res) => {
 });
 
 // Posting the user input to MongoDB and the AVL Tree to MongoDB
-router.post("/input/newInput", async (req, res) => {
+router.post("/newInput", async (req, res) => {
   if (DEBUG) console.log(req.body);
   try {
-    // new AVLTree() is a constructor function from bst_avl_trees.js and appends to the const createdTree
+    // new AVLTree() is a constructor function from avlTree.js and appends to the const createdTree
     const createdTree = new AVLTree();
     // input array is created to hold the user input after it is split
     // let userInput = [];
@@ -37,9 +37,10 @@ router.post("/input/newInput", async (req, res) => {
     // console.log(input);
 
     // Mapping each number creating an array object
-    userInput.map((number) => {
-      createdTree.insert(Number(number));
+    userInput.map((numbers) => {
+      createdTree.insert(Number(numbers));
     });
+    // if (DEBUG) console.log("createdTree:");
     if (DEBUG) console.log(`Created Tree: `, createdTree);
     console.log("userInput: ", userInput);
     const pushToMongo = JSON.stringify(createdTree);
@@ -48,7 +49,7 @@ router.post("/input/newInput", async (req, res) => {
     // res.redirect("/input/currentTree");
     // res.redirect("/treeify/currentTree");
     // res.redirect("/currentTree");
-    res.render("currentTree.ejs", { createdTree });
+    res.render("currentTree.ejs", { createdTree, userInput });
   } catch (error) {
     console.error(error);
     res.render("503");
@@ -62,7 +63,7 @@ router.post("/input/newInput", async (req, res) => {
 //     await numbersDal.addObjects(req.body.numbers);
 //     res.redirect("/input/");
 //     console.log("INPUT POST WORKED");
-//     await numbersDal.bst_avl_trees(req.body.numbers);
+//     await numbersDal.avlTree(req.body.numbers);
 //     res.redirect("/input/");
 //     console.log("AVL Tree WORKED");
 //   } catch {
@@ -74,12 +75,12 @@ router.post("/input/newInput", async (req, res) => {
 // router.post("/", async (req, res) => {
 //   if (DEBUG) console.log("numbers.POST");
 //   try {
-//     const newTree = await numbersDal.bst_avl_trees(req.body.numbers);
+//     const newTree = await numbersDal.avlTree(req.body.numbers);
 //     let input = [];
 //     await numbersDal.addObjects(req.body.numbers);
 //     res.redirect("/input/");
 //     console.log("INPUT POST WORKED");
-//     await numbersDal.bst_avl_trees(req.body.numbers);
+//     await numbersDal.avlTree(req.body.numbers);
 //     res.redirect("/input/");
 //     console.log("AVL Tree WORKED");
 //   } catch {

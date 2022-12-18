@@ -7,7 +7,7 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --detectOpenHandles",
     "start": "nodemon index.js"
   },
   "author": "David Turner",
@@ -22,5 +22,8 @@
     "mongodb": "^4.12.1",
     "nodemon": "^2.0.20",
     "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.3.1"
   }
 }

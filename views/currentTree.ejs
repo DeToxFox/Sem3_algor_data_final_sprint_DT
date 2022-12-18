@@ -6,11 +6,29 @@
     crossorigin="anonymous"
   />
   <%- include('./partials/head.ejs') %> <%- include('./partials/nav.ejs') %>
-  <!-- Cuurent display of numbers in a Binary Search Tree -->
+  <h3 style="text-align: center; margin-top: 1rem">
+    Displayed input of numbers in JSON format of a Binary Search Tree
+  </h3>
   <body>
+    <div
+      style="
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+        text-underline-offset: 0.5rem;
+      "
+      class="form-group"
+    >
+      <p>
+        <u><b>User Input: </b> <%= ( userInput ) %></u>
+      </p>
+    </div>
+
     <div>
       <!-- https://stackoverflow.com/questions/5670752/how-can-i-pretty-print-json-using-node-js#:~:text=234-,I,-think%20this%20might -->
-      <pre class="form-group"><%= JSON.stringify(createdTree, null, 4) %></pre>
+      <pre style="display: flex; justify-content: center" class="form-group">
+<%= JSON.stringify(createdTree, null, 4) %></pre
+      >
     </div>
   </body>
 </html>
