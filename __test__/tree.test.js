@@ -53,11 +53,13 @@ describe("binarySearchTree", () => {
 });
 
 // // Test 3 ------------------------------------------------------------------------
-test("Test to check max node.", () => {
-  const tree = new AVLTree();
-  tree.insert(1);
-  tree.insert(2);
-  tree.insert(3);
-  const big = tree.max();
-  expect(big.key).toBe(3);
+describe("check max node", () => {
+  test("Test to check max node", () => {
+    const tree = new AVLTree();
+    tree.insert(1);
+    tree.insert(2);
+    tree.insert(3);
+    const big = tree.max();
+    expect(big.key).toBe(3);
+  });
 });
