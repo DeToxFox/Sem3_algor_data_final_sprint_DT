@@ -14,6 +14,7 @@ const Compare = {
   BIGGER_THAN: 1,
   EQUALS: 0,
 };
+
 function defaultCompare(a, b) {
   if (a === b) {
     return Compare.EQUALS;
@@ -26,6 +27,7 @@ class BinarySearchTree {
     this.CompareFn = CompareFn;
     this.root = null;
   }
+
   // defaultCompare(a, b) {
   //   if (a === b) {
   //     return Compare.EQUALS;
@@ -179,6 +181,7 @@ const BalanceFactor = {
   SLIGHTLY_UNBALANCED_LEFT: 4,
   UNBALANCED_LEFT: 5,
 };
+
 // defaultCompared = BinarySearchTree;
 class AVLTree extends BinarySearchTree {
   constructor(compareFn = defaultCompare) {
@@ -337,4 +340,4 @@ const tree = new AVLTree(tree1.CompareFn);
 
 // console.log(`The Tree `, tree);
 
-module.exports = { AVLTree };
+module.exports = { AVLTree, BinarySearchTree, Compare, Node, defaultCompare };
