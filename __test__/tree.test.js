@@ -1,3 +1,11 @@
+const {
+  BinarySearchTree,
+  Compare,
+  Node,
+  defaultCompare,
+  CompareFn,
+} = require("../dataStructures/bst_avl_trees");
+
 // Test 1 ------------------------------------------------------------------------
 const { AVLTree } = require("../dataStructures/bst_avl_trees");
 const mdb = require("../services/mdb");
@@ -36,37 +44,20 @@ describe("AVL tree balance test", () => {
 });
 
 // Test 2 ------------------------------------------------------------------------
-const {
-  BinarySearchTree,
-  Compare,
-  Node,
-  defaultCompare,
-} = require("../dataStructures/bst_avl_trees");
-
 describe("binarySearchTree", () => {
   test("should initialize a binary search tree with a root of null", () => {
-    let bst = new BinarySearchTree();
+    let bst = new AVLTree();
     bst.insert(36);
     expect(bst.root.key).toBe(36);
   });
 });
 
-// Test 3 ------------------------------------------------------------------------
-describe("Testing the Functions that was Used From AVLTree Class", () => {
-  test("Tests the inputs of the AVL tree", () => {
-    const tree = new AVLTree();
-    tree.insert(10);
-    tree.insert(23);
-    tree.insert(35);
-    tree.insert(42);
-    tree.insert(50);
-    const printNode = (value) => console.log(value);
-    expect(tree.root).not.toBe(null);
-    tree.inOrderTraverse(printNode);
-    expect(tree.root.key).toBe(23);
-    expect(tree.root.left.key).toBe(10);
-    expect(tree.root.right.key).toBe(42);
-    expect(tree.root.right.left.key).toBe(35);
-    expect(tree.root.right.right.key).toBe(50);
-  });
+// // Test 3 ------------------------------------------------------------------------
+test("Test to check max node.", () => {
+  const tree = new AVLTree();
+  tree.insert(1);
+  tree.insert(2);
+  tree.insert(3);
+  const big = tree.max();
+  expect(big.key).toBe(3);
 });

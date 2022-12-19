@@ -22,6 +22,16 @@ function defaultCompare(a, b) {
   return a < b ? Compare.LESS_THAN : Compare.BIGGER_THAN;
 }
 
+function CompareFn(a, b) {
+  if (a < b) {
+    return -1;
+  } else if (a > b) {
+    return 1;
+  } else {
+    return 0;
+  }
+}
+
 class BinarySearchTree {
   constructor(CompareFn = this.defaultCompare) {
     this.CompareFn = CompareFn;
@@ -340,4 +350,11 @@ const tree = new AVLTree(tree1.CompareFn);
 
 // console.log(`The Tree `, tree);
 
-module.exports = { AVLTree, BinarySearchTree, Compare, Node, defaultCompare };
+module.exports = {
+  AVLTree,
+  BinarySearchTree,
+  Compare,
+  Node,
+  defaultCompare,
+  CompareFn,
+};
