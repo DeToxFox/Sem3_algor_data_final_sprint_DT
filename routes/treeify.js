@@ -23,7 +23,6 @@ router.post("/newInput", async (req, res) => {
     const createdTree = new AVLTree();
     // Splitting the user input into an array
     userInput = req.body.numbers.split(",");
-    // console.log(input);
 
     // Mapping each number creating an array object
     userInput.map((numbers) => {

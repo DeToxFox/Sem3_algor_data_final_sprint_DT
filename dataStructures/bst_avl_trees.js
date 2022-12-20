@@ -187,6 +187,7 @@ const BalanceFactor = {
 };
 
 // defaultCompared = BinarySearchTree;
+// extends means that AVLTree inherits from BinarySearchTree
 class AVLTree extends BinarySearchTree {
   constructor(compareFn = defaultCompare) {
     super(compareFn);

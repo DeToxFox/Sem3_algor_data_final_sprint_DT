@@ -3,7 +3,7 @@ const mdb = require("../services/mdb");
 let db = mdb.db("algor_sprint2").collection("input").find({});
 
 // Test 1 ------------------------------------------------------------------------
-describe("AVL tree balance test", () => {
+describe("Are the AVL trees balanced", () => {
   beforeAll(async () => {
     await mdb.connect();
   });
@@ -36,8 +36,9 @@ describe("AVL tree balance test", () => {
 });
 
 // Test 2 ------------------------------------------------------------------------
-describe("binarySearchTree", () => {
+describe("Binary Search Tree Root", () => {
   test("should initialize a binary search tree with a root of null", () => {
+    // new AVLTree() is a constructor function from avlTree.js and appends to the const bst
     let bst = new AVLTree();
     bst.insert(36);
     expect(bst.root.key).toBe(36);
@@ -45,8 +46,9 @@ describe("binarySearchTree", () => {
 });
 
 // // Test 3 ------------------------------------------------------------------------
-describe("check max node", () => {
+describe("check max node Binary Search Tree", () => {
   test("Test to check max node", () => {
+    // this test checks the max node in the tree using the max() function located in class AVLTree
     const tree = new AVLTree();
     tree.insert(1);
     tree.insert(2);
