@@ -1,16 +1,8 @@
-const {
-  BinarySearchTree,
-  Compare,
-  Node,
-  defaultCompare,
-  CompareFn,
-} = require("../dataStructures/bst_avl_trees");
-
-// Test 1 ------------------------------------------------------------------------
 const { AVLTree } = require("../dataStructures/bst_avl_trees");
 const mdb = require("../services/mdb");
 let db = mdb.db("algor_sprint2").collection("input").find({});
 
+// Test 1 ------------------------------------------------------------------------
 describe("AVL tree balance test", () => {
   beforeAll(async () => {
     await mdb.connect();

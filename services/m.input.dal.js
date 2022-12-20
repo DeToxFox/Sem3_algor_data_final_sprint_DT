@@ -16,11 +16,9 @@ async function getAllObjects() {
 async function addObjects(userInput, pushToMongo) {
   if (DEBUG)
     console.log("Dec 13, Algroithm Sprint, input.mongo.dal.addObjects()");
-  // const toMongoDB = JSON.stringify(createdTree);
   let newLogin = JSON.parse(
     `{  "numbers": "` + userInput + `", "tree": ` + pushToMongo + `}`
   );
-  // console.log(`newLogin Value: `, newLogin);
   try {
     await dal.connect();
     const result = await dal
