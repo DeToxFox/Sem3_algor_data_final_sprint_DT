@@ -15,7 +15,7 @@ app.use(methodOverride("_method"));
 // allows the use of the public folder and static files like images, css, and js
 app.use(express.static("public"));
 
-// Routes to the home page
+// "/" is the root and routes to the home page
 app.get("/", (req, res) => {
   res.render("home.ejs", { name: "David Turner" });
 });

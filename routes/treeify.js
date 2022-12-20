@@ -15,24 +15,13 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Routing to the input.ejs page to create a new Binary Search Tree
-router.get("/input", async (req, res) => {
-  try {
-    res.render("input");
-  } catch (error) {
-    console.error(error);
-    res.status(503).render("503");
-  }
-});
-
 // Posting the user input to MongoDB and the AVL Tree to MongoDB
 router.post("/newInput", async (req, res) => {
   if (DEBUG) console.log(req.body);
   try {
     // new AVLTree() is a constructor function from avlTree.js and appends to the const createdTree
     const createdTree = new AVLTree();
-    // input array is created to hold the user input after it is split
-    // let userInput = [];
+    // Splitting the user input into an array
     userInput = req.body.numbers.split(",");
     // console.log(input);
 
@@ -46,46 +35,11 @@ router.post("/newInput", async (req, res) => {
     const pushToMongo = JSON.stringify(createdTree);
     // Inserts the new tree into the database and the input from the user.
     numbersDal.addObjects(userInput, pushToMongo);
-    // res.redirect("/input/currentTree");
-    // res.redirect("/treeify/currentTree");
-    // res.redirect("/currentTree");
     res.render("currentTree.ejs", { createdTree, userInput });
   } catch (error) {
     console.error(error);
     res.render("503");
   }
 });
-
-// // original code
-// router.post("/", async (req, res) => {
-//   if (DEBUG) console.log("numbers.POST");
-//   try {
-//     await numbersDal.addObjects(req.body.numbers);
-//     res.redirect("/input/");
-//     console.log("INPUT POST WORKED");
-//     await numbersDal.avlTree(req.body.numbers);
-//     res.redirect("/input/");
-//     console.log("AVL Tree WORKED");
-//   } catch {
-//     res.render("503");
-//   }
-// });
-
-// original code + avl tree
-// router.post("/", async (req, res) => {
-//   if (DEBUG) console.log("numbers.POST");
-//   try {
-//     const newTree = await numbersDal.avlTree(req.body.numbers);
-//     let input = [];
-//     await numbersDal.addObjects(req.body.numbers);
-//     res.redirect("/input/");
-//     console.log("INPUT POST WORKED");
-//     await numbersDal.avlTree(req.body.numbers);
-//     res.redirect("/input/");
-//     console.log("AVL Tree WORKED");
-//   } catch {
-//     res.render("503");
-//   }
-// });
 
 module.exports = router;

@@ -1,6 +1,3 @@
-// const { BinarySearchTree, Node, defaultCompare, Compare } = require("./bst");
-// const { defaultCompare } = require(BinarySearchTree);
-
 class Node {
   constructor(key) {
     this.key = key;
@@ -37,13 +34,6 @@ class BinarySearchTree {
     this.CompareFn = CompareFn;
     this.root = null;
   }
-
-  // defaultCompare(a, b) {
-  //   if (a === b) {
-  //     return Compare.EQUALS;
-  //   }
-  //   return a < b ? Compare.LESS_THAN : Compare.BIGGER_THAN;
-  // }
 
   insert(key) {
     if (this.root === null) {
@@ -183,12 +173,16 @@ class BinarySearchTree {
 }
 
 //AVL TREE
-
 const BalanceFactor = {
+  // UNBALANCED_RIGHT: 1, Means that the right subtree is higher than the left subtree by more than one level
   UNBALANCED_RIGHT: 1,
+  // SLIGHTLY_UNBALANCED_RIGHT: 2, Means that the right subtree is higher than the left subtree by one level
   SLIGHTLY_UNBALANCED_RIGHT: 2,
+  // BALANCED: 3, Means that the left and right subtree have the same height
   BALANCED: 3,
+  // SLIGHTLY_UNBALANCED_LEFT: 4, Means that the left subtree is higher than the right subtree by one level
   SLIGHTLY_UNBALANCED_LEFT: 4,
+  // UNBALANCED_LEFT: 5, Means that the left subtree is higher than the right subtree by more than one level
   UNBALANCED_LEFT: 5,
 };
 
@@ -293,7 +287,6 @@ class AVLTree extends BinarySearchTree {
   }
 
   //Removing a node from the AVL Tree
-
   removeNode(node, key) {
     node = super.removeNode(node, key); // {1}
     if (node == null) {
@@ -335,26 +328,8 @@ class AVLTree extends BinarySearchTree {
   }
 }
 
-// defaultCompare(a, b);
-// {
-//   if (a === b) {
-//     return Compare.EQUALS;
-//   }
-//   return a < b ? Compare.LESS_THAN : Compare.BIGGER_THAN;
-// }
-// const printNode = (value) => console.log(value);
-
 const tree1 = new BinarySearchTree();
 
 const tree = new AVLTree(tree1.CompareFn);
 
-// console.log(`The Tree `, tree);
-
-module.exports = {
-  AVLTree,
-  BinarySearchTree,
-  Compare,
-  Node,
-  defaultCompare,
-  CompareFn,
-};
+module.exports = { AVLTree };
