@@ -1,6 +1,7 @@
 const { ObjectId } = require("mongodb");
 const dal = require("./mdb");
 
+// getAllObjects() - returns all objects in the MongoDB collection
 async function getAllObjects() {
   if (DEBUG) console.log("input.mongo.dal.getAllObjects()");
   try {
@@ -13,6 +14,7 @@ async function getAllObjects() {
   }
 }
 
+// addObjects() - adds a new object to the MongoDB collection
 async function addObjects(userInput, pushToMongo) {
   if (DEBUG)
     console.log("Dec 13, Algroithm Sprint, input.mongo.dal.addObjects()");
@@ -31,6 +33,7 @@ async function addObjects(userInput, pushToMongo) {
   }
 }
 
+// Export the functions for use in other modules
 module.exports = {
   getAllObjects,
   addObjects,

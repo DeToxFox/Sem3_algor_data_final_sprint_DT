@@ -45,7 +45,7 @@ describe("Binary Search Tree Root", () => {
   });
 });
 
-// // Test 3 ------------------------------------------------------------------------
+// Test 3 ------------------------------------------------------------------------
 describe("check max node Binary Search Tree", () => {
   test("Test to check max node", () => {
     // this test checks the max node in the tree using the max() function located in class AVLTree

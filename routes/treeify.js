@@ -21,14 +21,13 @@ router.post("/newInput", async (req, res) => {
   try {
     // new AVLTree() is a constructor function from avlTree.js and appends to the const createdTree
     const createdTree = new AVLTree();
-    // Splitting the user input into an array
+    // Splitting the user input into an array of numbers for the tree
     userInput = req.body.numbers.split(",");
 
     // Mapping each number creating an array object
     userInput.map((numbers) => {
       createdTree.insert(Number(numbers));
     });
-    // if (DEBUG) console.log("createdTree:");
     if (DEBUG) console.log(`Created Tree: `, createdTree);
     console.log("userInput: ", userInput);
     const pushToMongo = JSON.stringify(createdTree);
@@ -41,4 +40,5 @@ router.post("/newInput", async (req, res) => {
   }
 });
 
+// Export the router for use in other modules
 module.exports = router;
