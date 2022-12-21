@@ -1,10 +1,7 @@
 # Algorithms and Data Processing Semester 3
 
-<!-- Semester 3 Final Sprint, build a RESTful API, Node/Express/EJS/PostgreSQ -->
-
 - Date: Dec 10, 2022
 - Assignment: Final Sprint (Default Project)
-<!-- - Assignment Detail: Build a RESTful API, Node/Express/EJS/ PostgreSQ -->
 - Course Name: Algorithms and Data Processing
 - Written By: David Turner
 
