@@ -1,3 +1,4 @@
+// class Node is used to create an object representing a node in a tree
 class Node {
   constructor(key) {
     this.key = key;
@@ -6,12 +7,15 @@ class Node {
   }
 }
 
+// constant Compare is declared with LESS_THAN, BIGGER_THAN, and EQUALS
+// properties to be used in the defaultCompare function
 const Compare = {
   LESS_THAN: -1,
   BIGGER_THAN: 1,
   EQUALS: 0,
 };
 
+// defaultCompare is used to compare the keys of two nodes
 function defaultCompare(a, b) {
   if (a === b) {
     return Compare.EQUALS;
@@ -29,12 +33,14 @@ function CompareFn(a, b) {
   }
 }
 
+// class BinarySearchTree is used to create a Binary Search Tree
 class BinarySearchTree {
   constructor(CompareFn = this.defaultCompare) {
     this.CompareFn = CompareFn;
     this.root = null;
   }
-
+  // insert is used to insert a new node into the tree but first checks if the tree
+  // is empty and if so, creates a new node making the key the root
   insert(key) {
     if (this.root === null) {
       this.root = new Node(key);
@@ -42,6 +48,8 @@ class BinarySearchTree {
       this.insertNode(this.root, key);
     }
   }
+  // insertNode is used to insert a new node into the tree if the tree is not empty and node, key
+  // are passed in as parameters to the function and the key is compared to the node key
   insertNode(node, key) {
     if (this.CompareFn(key, node.key) === Compare.LESS_THAN) {
       if (node.left == null) {
@@ -57,6 +65,7 @@ class BinarySearchTree {
       }
     }
   }
+  // inOrderTraverse is used to traverse the tree in order from left to right
   inOrderTraverse(callback) {
     this.inOrderTraverseNode(this.root, callback);
   }
@@ -67,7 +76,7 @@ class BinarySearchTree {
       this.inOrderTraverseNode(node.right, callback);
     }
   }
-
+  // preOrderTraverse is used to traverse the tree in pre order from root to left to right
   preOrderTraverse(callback) {
     this.preOrderTraverseNode(this.root, callback);
   }
@@ -78,7 +87,7 @@ class BinarySearchTree {
       this.preOrderTraverseNode(node.right, callback);
     }
   }
-
+  // postOrderTraverse is used to traverse the tree in post order from left to right to root
   postOrderTraverse(callback) {
     this.postOrderTraverseNode(this.root, callback);
   }
@@ -89,7 +98,7 @@ class BinarySearchTree {
       callback(node.key);
     }
   }
-
+  // min is used to find the minimum value in the tree
   min() {
     return this.minNode(this.root);
   }
@@ -100,7 +109,7 @@ class BinarySearchTree {
     }
     return current;
   }
-
+  // max is used to find the maximum value in the tree
   max() {
     return this.maxNode(this.root);
   }
@@ -111,7 +120,7 @@ class BinarySearchTree {
     }
     return current;
   }
-
+  // search is used to search for a key in the tree
   search(key) {
     return this.searchNode(this.root, key);
   }
@@ -194,14 +203,14 @@ class AVLTree extends BinarySearchTree {
     this.compareFn = compareFn;
     this.root = null;
   }
-
+  // defaultCompare is used to compare the keys of the nodes
   defaultCompare(a, b) {
     if (a === b) {
       return Compare.EQUALS;
     }
     return a < b ? Compare.LESS_THAN : Compare.BIGGER_THAN;
   }
-
+  // getNodeHeight is used to get the height of a node
   getNodeHeight(node) {
     if (node == null) {
       return -1;
@@ -211,6 +220,7 @@ class AVLTree extends BinarySearchTree {
       1
     );
   }
+  // getBalanceFactor is used to get the balance factor of a node
   getBalanceFactor(node) {
     const heightDifference =
       this.getNodeHeight(node.left) - this.getNodeHeight(node.right);
@@ -227,29 +237,34 @@ class AVLTree extends BinarySearchTree {
         return BalanceFactor.BALANCED;
     }
   }
+  // rotationLL is used to rotate a node to the left
   rotationLL(node) {
     const tmp = node.left; // {1}
     node.left = tmp.right; // {2}
     tmp.right = node; // {3}
     return tmp;
   }
+  // rotationRR is used to rotate a node to the right
   rotationRR(node) {
     const tmp = node.right; // {1}
     node.right = tmp.left; // {2}
     tmp.left = node; // {3}
     return tmp;
   }
+  // rotationLR is used to rotate a node to the left then to the right
   rotationLR(node) {
     node.left = this.rotationRR(node.left);
     return this.rotationLL(node);
   }
+  // rotationRL is used to rotate a node to the right then to the left
   rotationRL(node) {
     node.right = this.rotationLL(node.right);
     return this.rotationRR(node);
   }
 
   //Inserting a node in an AVL tree works the same way as in BST.
-
+  // The only difference is that after inserting a node, we need to
+  // check if the tree is balanced. If it is not, we need to balance it.
   insert(key) {
     this.root = this.insertNode(this.root, key);
   }
@@ -333,4 +348,5 @@ const tree1 = new BinarySearchTree();
 
 const tree = new AVLTree(tree1.CompareFn);
 
+// module.exports will be used to export the AVLTree class
 module.exports = { AVLTree };

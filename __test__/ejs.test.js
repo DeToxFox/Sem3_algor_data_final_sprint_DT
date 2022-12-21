@@ -1,5 +1,6 @@
 const fs = require("fs");
 
+// Test 1 ------------------------------------------------------------------------
 test("index is accessible", async () => {
   const filePath = "index.js";
 
@@ -11,6 +12,7 @@ test("index is accessible", async () => {
   }
 });
 
+// Test 2 ------------------------------------------------------------------------
 test("home.ejs is accessible", async () => {
   const filePath = "views/home.ejs";
 
@@ -22,6 +24,7 @@ test("home.ejs is accessible", async () => {
   }
 });
 
+// Test 3 ------------------------------------------------------------------------
 test("display.ejs is accessible", async () => {
   const filePath = "views/display.ejs";
 
@@ -33,6 +36,7 @@ test("display.ejs is accessible", async () => {
   }
 });
 
+// Test 4 ------------------------------------------------------------------------
 test("currentTree.ejs is accessible", async () => {
   const filePath = "views/currentTree.ejs";
 
@@ -44,6 +48,7 @@ test("currentTree.ejs is accessible", async () => {
   }
 });
 
+// Test 5 ------------------------------------------------------------------------
 test("503.ejs is accessible", async () => {
   const filePath = "views/503.ejs";
 
@@ -55,6 +60,7 @@ test("503.ejs is accessible", async () => {
   }
 });
 
+// Test 6 ------------------------------------------------------------------------
 test("404.ejs is accessible", async () => {
   const filePath = "views/404.ejs";
 
